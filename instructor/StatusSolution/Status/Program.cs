@@ -7,6 +7,7 @@ var app = builder.Build();
 
 app.MapGet("/status", () =>
 {
+    // get the data from a database, or whatever..
     var statusMessage = new StatusMessage(Guid.NewGuid(), "Looks Good", DateTimeOffset.Now);
     return Results.Ok(statusMessage);
 });
