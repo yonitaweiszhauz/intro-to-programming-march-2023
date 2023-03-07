@@ -5,15 +5,7 @@ namespace Banking.UnitTests;
 
 public class OverdraftNotAllowed
 {
-    [Fact]
-    public void BadBehaviorOverdraftIsAllowed()
-    {
-        var account = new BankAccount();
 
-        account.Withdraw(account.GetBalance() + .01M);
-
-        Assert.Equal(-.01M, account.GetBalance());
-    }
 
     [Fact]
     public void OverdraftDoesNotDecreaseBalance()
@@ -22,8 +14,29 @@ public class OverdraftNotAllowed
         var account = new BankAccount();
         var openingBalance = account.GetBalance();
 
-        account.Withdraw(account.GetBalance() + .01M);
+        try
+        {
+            account.Withdraw(account.GetBalance() + .01M);
+        }
+        catch (OverdraftException)
+        {
+
+            // Ignore this..
+        }
 
         Assert.Equal(openingBalance, account.GetBalance());
+    }
+
+    [Fact]
+    public void OverdraftThrowsException()
+    {
+        var account = new BankAccount();
+        var openingBalance = account.GetBalance();
+
+        Assert.Throws<OverdraftException>(() =>
+        {
+            account.Withdraw(account.GetBalance() + .01M);
+
+        });
     }
 }

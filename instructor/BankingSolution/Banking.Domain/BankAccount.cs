@@ -17,7 +17,7 @@
         {
             if (amountToWithdraw > _balance)
             {
-                return;
+                throw new OverdraftException();
             }
             else
             {
