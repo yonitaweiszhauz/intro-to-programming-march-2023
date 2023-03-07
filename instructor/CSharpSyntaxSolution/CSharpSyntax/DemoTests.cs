@@ -46,6 +46,8 @@ public class DemoTests
 
         Customer bob = new Customer();
 
+        // what is our PROMISE to people using this thing.
+
         Assert.Equal(5000, bob.GetCurrentAvailableCredit());
         bob.IncreaseAvailableCredit(50, DateTimeOffset.Now);
         Assert.Equal(5050, bob.GetCurrentAvailableCredit());
