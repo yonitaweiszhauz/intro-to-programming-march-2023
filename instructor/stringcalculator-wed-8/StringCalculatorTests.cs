@@ -65,4 +65,40 @@ public class StringCalculatorTests
 
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData("//;\n1;2", 3)]
+    [InlineData("//;\n3;2", 5)]
+    [InlineData("//*\n1*1", 2)]
+    [InlineData("//X\n1X2,3,4\n1", 11)]
+    public void CustomDelimeters(string numbers, int expected)
+    {
+        var calculator = new StringCalculator();
+
+        var result = calculator.Add(numbers);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
+    [InlineData("-1", "-1")]
+    [InlineData("1,2\n-4", "-4")]
+    [InlineData("1,2\n-4,-3", "-4,-3")]
+    
+    
+    public void NegativeNumbersThrows(string numbers, string message)
+    {
+        var calculator = new StringCalculator();
+
+        var exception = Assert.Throws<NoNegativeNumbersException>(() =>
+        {
+            calculator.Add(numbers);
+            
+        });
+        
+        Assert.StartsWith(message, exception.Message);
+
+       
+    }
+
 }
