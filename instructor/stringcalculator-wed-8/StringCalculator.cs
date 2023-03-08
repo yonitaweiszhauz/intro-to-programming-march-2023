@@ -6,6 +6,10 @@ public class StringCalculator
 
     public int Add(string numbers)
     {
+        if (numbers == "")
+        {
+            return 0;
+        }
         var delimiters = new List<char> { '\n', ',' };
         if(numbers.StartsWith("//"))
         {
@@ -15,17 +19,14 @@ public class StringCalculator
 
         }
        
-        if(numbers == "")
-        {
-            return 0;
-        }
+
         var nums = numbers.Split(delimiters.ToArray())
             .Select(int.Parse);
 
         var negatives = nums.Where(n => n < 0);
         if(negatives.Count() > 0)
         {
-            var message = String.Join(',', negatives.ToArray());
+            var message = string.Join(',', negatives.ToArray());
             throw new NoNegativeNumbersException(message);
         }
 
