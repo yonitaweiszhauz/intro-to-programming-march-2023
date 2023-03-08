@@ -52,4 +52,17 @@ public class StringCalculatorTests
 
         Assert.Equal(expected, result);
     }
+    [Theory]
+    [InlineData("1\n3", 4)]
+    [InlineData("2\n3", 5)]
+    [InlineData("1\n2,3", 6)]
+
+    public void NewLines(string numbers, int expected)
+    {
+        var calculator = new StringCalculator();
+
+        var result = calculator.Add(numbers);
+
+        Assert.Equal(expected, result);
+    }
 }
