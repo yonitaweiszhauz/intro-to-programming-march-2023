@@ -1,29 +1,29 @@
-﻿namespace Banking.Domain
+﻿namespace Banking.Domain;
+
+public class BankAccount
 {
-    public class BankAccount
+    private decimal _balance = 5000;
+
+    public void Deposit(decimal amountToDeposit)
     {
-        private decimal _balance = 5000;
-        public void Deposit(decimal amountToDeposit)
-        {
-            _balance += amountToDeposit;
-            //_balance = _balance + amountToDeposit;
-        }
+        _balance += amountToDeposit;
+        //_balance = _balance + amountToDeposit;
+    }
 
-        public decimal GetBalance()
-        {
-            return _balance; // Just Hard Code It (JHCI)
-        }
+    public decimal GetBalance()
+    {
+        return _balance; // Just Hard Code It (JHCI)
+    }
 
-        public void Withdraw(decimal amountToWithdraw)
+    public void Withdraw(decimal amountToWithdraw)
+    {
+        if(amountToWithdraw > _balance)
         {
-            if(amountToWithdraw > _balance)
-            {
-                throw new OverdraftException();
-            }
-            else
-            {
-                _balance -= amountToWithdraw;
-            }
+            throw new OverdraftException();
+        }
+        else
+        {
+            _balance -= amountToWithdraw;
         }
     }
 }

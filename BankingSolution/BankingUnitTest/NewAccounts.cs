@@ -1,7 +1,7 @@
 using Banking.Domain;
 
-namespace BankingUnitTest
-{
+namespace BankingUnitTest;
+
     public class NewAccounts
     {
         [Fact]
@@ -9,11 +9,10 @@ namespace BankingUnitTest
         {
             // "Write the code you wish you had" (WTCYWYH)
             // Given
-            BankAccount account = new BankAccount();
+            var account = new BankAccount();
             // When
             decimal balance = account.GetBalance();
             // Then
             Assert.Equal(5000, balance);
         }
     }
-}

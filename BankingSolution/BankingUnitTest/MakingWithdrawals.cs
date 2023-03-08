@@ -1,14 +1,13 @@
-﻿
-using Banking.Domain;
+﻿using Banking.Domain;
 
-namespace Banking.UnitTest;
+namespace BankingUnitTest;
 
 public class MakingWithdrawals
 {
     [Theory]
     [InlineData(1)]
     [InlineData(1020.22)]
-    public void MakingaWithdrawalDecreasesTheBalance(decimal amountToWithdraw)
+    public void MakingaWithdrawalDecreasesBalance(decimal amountToWithdraw)
     {
         // Given
         var account = new BankAccount();
@@ -19,6 +18,6 @@ public class MakingWithdrawals
         account.Withdraw(amountToWithdraw); // Command (Action)
 
         // Then
-        Assert.Equal(openingBalance + amountToWithdraw, account.GetBalance());
+        Assert.Equal(openingBalance - amountToWithdraw, account.GetBalance());
     }
 }
