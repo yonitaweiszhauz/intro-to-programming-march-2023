@@ -39,4 +39,17 @@ public class StringCalculatorTests
 
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData("1,2,3", 6)]
+    [InlineData("1,2,3,4,5,6,7,8,9", 45)]
+
+    public void UnknownNumbers(string numbers, int expected)
+    {
+        var calculator = new StringCalculator();
+
+        var result = calculator.Add(numbers);
+
+        Assert.Equal(expected, result);
+    }
 }

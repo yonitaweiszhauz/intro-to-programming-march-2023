@@ -10,14 +10,8 @@ public class StringCalculator
         {
             return 0;
         }
-        if(numbers.Contains(','))
-        {
-            var seperatorAt = numbers.IndexOf(',');
-            var lhs = int.Parse(numbers.Substring(0, seperatorAt));
-            var rhs = int.Parse(numbers.Substring(seperatorAt + 1));
-
-            return lhs + rhs;
-        }
-        return  int.Parse(numbers);
+        return numbers.Split(',')
+            .Select(int.Parse)
+            .Sum();
     }
 }
