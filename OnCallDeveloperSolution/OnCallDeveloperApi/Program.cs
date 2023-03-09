@@ -19,5 +19,5 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
-
+// here runs before our API is up and running and listening for requests
 app.Run();
