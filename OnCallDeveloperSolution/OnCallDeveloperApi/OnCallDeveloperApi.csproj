@@ -12,6 +12,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include ="OnCallDeveloperAPI.IntegrationTests"/>
+		<InternalsVisibleTo Include="OnCallDeveloperAPI.IntegrationTests" />
 	</ItemGroup>
 </Project>
