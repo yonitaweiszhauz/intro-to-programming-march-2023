@@ -7,6 +7,9 @@ namespace Banking.UnitTests;
 
 public class BankAccountUsesBonusCalculator
 {
+
+
+
     [Fact()]
     public void IntegratesWithBonusCalculator()
     {
