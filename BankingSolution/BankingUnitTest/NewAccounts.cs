@@ -1,5 +1,6 @@
 using Banking.Domain;
 using BankingUnitTest.TestDoubles;
+using Moq;
 
 namespace BankingUnitTest;
 
@@ -10,7 +11,7 @@ namespace BankingUnitTest;
         {
             // "Write the code you wish you had" (WTCYWYH)
             // Given
-            var account = new BankAccount(new DummyBonusCalculator());
+            var account = new BankAccount(new Mock<ICalculateBonuses>().Object);
             // When
             decimal balance = account.GetBalance();
             // Then
