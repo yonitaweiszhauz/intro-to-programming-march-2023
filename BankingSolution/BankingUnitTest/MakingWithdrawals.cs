@@ -1,4 +1,5 @@
 ﻿using Banking.Domain;
+using BankingUnitTest.TestDoubles;
 
 namespace BankingUnitTest;
 
@@ -10,7 +11,7 @@ public class MakingWithdrawals
     public void MakingaWithdrawalDecreasesBalance(decimal amountToWithdraw)
     {
         // Given
-        var account = new BankAccount();
+        var account = new BankAccount(new DummyBonusCalculator());
         var openingBalance = account.GetBalance(); // Query (Func)
         //var amountToWithdraw = 1M;
 

@@ -1,4 +1,5 @@
 ﻿using Banking.Domain;
+using BankingUnitTest.TestDoubles;
 using Xunit;
 
 namespace BankingUnitTest;
@@ -11,7 +12,7 @@ namespace BankingUnitTest;
         public void DepositsIncreasesTheBalance(decimal amountToDeposit)
         {
             // Given
-            var account = new BankAccount();
+            var account = new BankAccount(new DummyBonusCalculator());
             var openingBalance = account.GetBalance(); // Query (Func)
             //var amountToDeposit = 100M;
 
