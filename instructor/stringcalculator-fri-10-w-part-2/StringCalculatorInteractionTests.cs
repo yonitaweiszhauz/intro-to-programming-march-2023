@@ -50,8 +50,6 @@ public class StringCalculatorInteractionTests
 
         mockedWebService.Verify(w => w.LoggingFailed(expectedMessage), Times.Once);
 
-       
-        
     }
 
     [Fact]
