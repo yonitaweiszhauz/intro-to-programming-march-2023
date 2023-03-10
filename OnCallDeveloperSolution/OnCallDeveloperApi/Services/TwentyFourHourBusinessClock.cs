@@ -1,4 +1,6 @@
-﻿namespace OnCallDeveloperApi.Services; 
+﻿namespace OnCallDeveloperAPI.Services;
+
+using OnCallDeveloperAPI.Controllers;
 
 public class TwentyFourHourBusinessClock : IProvideTheBusinessClock
 {

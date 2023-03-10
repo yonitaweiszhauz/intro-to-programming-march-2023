@@ -1,4 +1,5 @@
 ﻿using Alba;
+using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using OnCallDeveloperAPI.Controllers;
 using OnCallDeveloperAPI.Models;
@@ -10,49 +11,68 @@ public class OnCallDeveloperResourceTests
     [Fact]
     public async Task CanGetOnCallDeveloperDuringBusinessHours()
     {
-        var stubbedBusinessClock = new Mock<IProvideTheBusinessClock>();
-        stubbedBusinessClock.Setup(clock => clock.IsDuringBusinessHours()).Returns(false);
-
-        builder.ConfigureServices(services =>
+        // "Host" for our API our API will be up and running.
+        await using var host = await AlbaHost.For<Program>(builder =>
         {
-            services.AddSingleton<IProvideTheBusinessClock>(stubbedBusinessClock.Object);
+            var stubbedBusinessClock = new Mock<IProvideTheBusinessClock>();
+            stubbedBusinessClock.Setup(clock => clock.IsDuringBusinessHours()).Returns(true);
+
+            builder.ConfigureServices(services =>
+            {
+                services.AddSingleton<IProvideTheBusinessClock>(stubbedBusinessClock.Object);
+            });
         });
 
-        // Scenario
+        // Scenarios  - 
         var response = await host.Scenario(api =>
         {
             api.Get.Url("/oncalldeveloper");
             api.StatusCodeShouldBeOk();
+
         });
 
-        var expectedResponse = new GetOnCallDeveloperResponse("Michael N.", "555-1212", "mike@aol.com"); 
-        var actualResponse = response.ReadAsJson<GetOnCallDeveloperResponse>(); 
+        var expectedResponse =
+            new GetOnCallDeveloperResponse("Michael N.", "555-1212", "mike@aol.com");
+
+        var actualResponse = response.ReadAsJson<GetOnCallDeveloperResponse>();
+
         Assert.NotNull(actualResponse);
+
         Assert.Equal(expectedResponse, actualResponse);
+
     }
-
-        [Fact]
-        public async Task CanGetOnCallDeveloperOutsideBusinessHours()
+    [Fact]
+    public async Task CanGetOnCallDeveloperOutsideBusinessHours()
+    {
+        // "Host" for our API our API will be up and running.
+        await using var host = await AlbaHost.For<Program>(builder =>
         {
-        // "Host" for our API our API will be up and running
-        var stubbedBusinessClock = new Mock<IProvideTheBusinessClock>();
-        stubbedBusinessClock.Setup(clock => clock.IsDuringBusinessHours()).Returns(false);
+            var stubbedBusinessClock = new Mock<IProvideTheBusinessClock>();
+            stubbedBusinessClock.Setup(clock => clock.IsDuringBusinessHours()).Returns(false);
 
-        builder.ConfigureServices(services =>
-        {
-            services.AddSingleton<IProvideTheBusinessClock>(stubbedBusinessClock.Object);
+            builder.ConfigureServices(services =>
+            {
+                services.AddSingleton<IProvideTheBusinessClock>(stubbedBusinessClock.Object);
+            });
         });
 
-        // Scenario
-        var response = await host.Scenario(api =>
-            {
-                api.Get.Url("/oncalldeveloper");
-                api.StatusCodeShouldBeOk();
-            });
 
-            var expectedResponse = new GetOnCallDeveloperResponse("OnCallCorp Customer Service", "800 GOOD-LUCK", "oncall@company.com");
-            var actualResponse = response.ReadAsJson<GetOnCallDeveloperResponse>();
-            Assert.NotNull(actualResponse);
-            Assert.Equal(expectedResponse, actualResponse);
-        }
+        // Scenarios  - 
+        var response = await host.Scenario(api =>
+        {
+            api.Get.Url("/oncalldeveloper");
+            api.StatusCodeShouldBeOk();
+
+        });
+
+        var expectedResponse =
+            new GetOnCallDeveloperResponse("OnCallCorp Customer Service", "800 GOOD-LUCK", "oncall@company.com");
+
+        var actualResponse = response.ReadAsJson<GetOnCallDeveloperResponse>();
+
+        Assert.NotNull(actualResponse);
+
+        Assert.Equal(expectedResponse, actualResponse);
+
+    }
 }

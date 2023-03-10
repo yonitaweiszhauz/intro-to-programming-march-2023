@@ -12,6 +12,6 @@ public class StandardBusinessClock : IProvideTheBusinessClock
     public bool IsDuringBusinessHours()
     {
         var currentHour = _systemTime.GetCurrent().Hour;
-        return currentHour >= 9 && currentHour < 17;
+        return currentHour >= 9 && currentHour < 15;
     }
 }
