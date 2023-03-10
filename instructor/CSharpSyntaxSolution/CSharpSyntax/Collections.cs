@@ -1,4 +1,6 @@
 ﻿
+using System.Runtime.Serialization;
+
 namespace CSharpSyntax;
 
 public class Collections
@@ -76,17 +78,23 @@ public class Collections
             Name = "Robert",
             Salary = 82_000
         };
+
+       
         
         var jeff = new Contractor();
         jeff.Name = "Jeffry";
         jeff.HourlyRate = 28.85M;
 
+        IProvidePayInformation sue = new Employee { Name = "Susan", Salary = 230_000 };
+        
 
-        var workers = new List<Worker>
+        var workers = new List<IProvidePayInformation>
         {
             bob,
-            jeff
+            jeff,
+           
         };
+        
         foreach(var person in workers)
         {
             // give me whatever your pay is.
@@ -95,33 +103,59 @@ public class Collections
 
        // var dylan = new Worker();
     }
-}
 
-
-public abstract class Worker {
-    public string Name { get; set; } = string.Empty;
-    public abstract decimal GetPay();
-}
-
-
-public class Employee : Worker
-{
-   
-    public decimal Salary { get; set; }
-
-    public override decimal GetPay()
+    [Fact]
+    public void Dictionaries()
     {
-        return Salary;
+        var myFriends = new Dictionary<char, string>
+        {
+            { 's', "Sam" },
+            { 'd', "David" }
+        };
+
+        myFriends['s'] = "Sean";
+
+        Assert.Equal("Sean", myFriends['s']);
+
+        foreach(KeyValuePair<char, string> kvp in myFriends)
+        {
+            
+        }
+
+        foreach(var key in myFriends.Keys)
+        {
+
+        }
+        foreach(var value in myFriends.Values)
+        {
+
+        }
     }
 }
 
-public class Contractor : Worker
+
+public interface IProvidePayInformation
 {
-    //public string Name { get; set; } = string.Empty;
+    decimal GetPay();
+}
+public class Employee : IProvidePayInformation
+{
+    public string Name { get; set; } = string.Empty;
+    public decimal Salary { get; set; }
+
+    decimal IProvidePayInformation.GetPay()
+    {
+        return this.Salary;
+    }
+}
+
+public class Contractor : IProvidePayInformation
+{
+    public string Name { get; set; } = string.Empty;
     public decimal HourlyRate { get; set; }
 
-    public override decimal GetPay()
+    decimal IProvidePayInformation.GetPay()
     {
-        return HourlyRate;
+        return this.HourlyRate * 40 * 365;
     }
 }
