@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { OnCallDeveloperResponseModel } from 'src/app/models/oncalldeveloper';
+import { OnCallDataService } from 'src/app/services/oncall-data.service';
 
 @Component({
   selector: 'app-support',
@@ -13,7 +13,7 @@ export class SupportComponent {
 
   onCallDeveloper$: Observable<OnCallDeveloperResponseModel>;
 
-  constructor(client:HttpClient) {
-    this.onCallDeveloper$ = client.get<OnCallDeveloperResponseModel>('http://localhost:1338/oncalldeveloper')
+  constructor(service:OnCallDataService) {
+    this.onCallDeveloper$ = service.getCurrentHelpInformation();
   }
 }
