@@ -23,6 +23,6 @@ public class Stuff
 public class StuffUtilities{
     public static void DoSomeStuff(Stuff obj)
     {
-
+        obj.SetX(50000);
     }
 }

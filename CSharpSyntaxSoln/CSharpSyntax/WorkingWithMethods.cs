@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace CSharpSyntax;
+﻿namespace CSharpSyntax;
 
 public class WorkingWithMethods
 {
@@ -19,7 +17,7 @@ public class WorkingWithMethods
         o2.DoIt();
         o2.DoIt();
 
-        Assert.Equal(19, o2.GetX());
+        Assert.Equal(19, o1.GetX());
         Assert.Equal(17, o2.GetX());
     }
 
@@ -47,16 +45,15 @@ public class WorkingWithMethods
         Assert.Equal(108, s1.GetX());
         Assert.Equal(108, s2.GetX());
 
-        var s3 = new Stuff();
-        StuffUtilities.DoSomeStuff(s3);
 
-        Assert.Equal(20, s3.GetX());
+
     }
 
+    [Fact]
     public void SideEffects()
     {
         var s3 = new Stuff();
-        StuffUtilities.DoSomeStuff(s3);
+        StuffUtilies.DoSomeStuff(s3);
 
         Assert.NotEqual(20, s3.GetX());
     }
