@@ -1,28 +1,45 @@
 {
-  "editor.linkedEditing": true,
-  "workbench.editor.wrapTabs": true,
-  "workbench.editor.decorations.colors": true,
-  "workbench.editor.decorations.badges": true,
-  "workbench.tree.indent": 25,
-  "breadcrumbs.enabled": true,
-  "html.format.wrapAttributes": "force-aligned",
-  "explorer.openEditors.visible": 0,
-  "editor.formatOnSave": true,
-  "files.autoSave": "onFocusChange",
-  "typescript.check.npmIsInstalled": true,
-  "editor.snippetSuggestions": "top",
-  "workbench.editor.labelFormat": "medium",
-  "editor.minimap.enabled": false,
-  "window.zoomLevel": 0,
-  "workbench.colorCustomizations": {
-    "editorIndentGuide.activeBackground": "#ff0000"
-  },
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": false,
-    "source.fixAll": true
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-
-  "explorer.confirmDelete": false,
-  "eslint.quiet": false
+    "editor.linkedEditing": true,
+    "workbench.editor.wrapTabs": true,
+    "workbench.editor.decorations.colors": true,
+    "workbench.editor.decorations.badges": true,
+    "workbench.tree.indent": 25,
+    "breadcrumbs.enabled": true,
+    "html.format.wrapAttributes": "force-aligned",
+    "explorer.openEditors.visible": 0,
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    "typescript.check.npmIsInstalled": true,
+    "editor.snippetSuggestions": "top",
+    "workbench.editor.labelFormat": "medium",
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 0,
+    "workbench.colorCustomizations": {
+        "editorIndentGuide.activeBackground": "#ff0000",
+        "activityBar.activeBackground": "#1f6fd0",
+        "activityBar.background": "#1f6fd0",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#ee90bb",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#1f6fd0",
+        "statusBar.background": "#1857a4",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#1f6fd0",
+        "statusBarItem.remoteBackground": "#1857a4",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#1857a4",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#1857a499",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": false,
+        "source.fixAll": true
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false,
+    "eslint.quiet": false,
+    "peacock.color": "#1857a4"
 }
