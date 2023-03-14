@@ -8,6 +8,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SupportComponent } from './components/support/support.component';
 import { HttpClientModule } from '@angular/common/http'
+import { CounterModule } from './features/counter/counter.module';
+import { OnCallDataService } from './services/oncall-data.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CounterModule
   ],
-  providers: [],
+  providers: [OnCallDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
