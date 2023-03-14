@@ -1,14 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
+import { ValidCountByValues } from '../../models';
 import { counterEvents } from '../actions/counter.actions';
 // Describe it for TypeScript
 export interface CounterState {
   current: number;
+  by: ValidCountByValues;
 }
 
 // What is the "initial" state when the application starts.
 
 const initialState: CounterState = {
   current: 0,
+  by: 1,
 };
 
 // Here is where we decide that if a action happens, does that mean a new state needs created?
@@ -18,11 +21,12 @@ export const reducer = createReducer(
   initialState,
   on(counterEvents.incrementButtonClicked, (currentState: CounterState) => ({
     ...currentState,
-    current: currentState.current + 1,
+    current: currentState.current + currentState.by,
   })),
   on(counterEvents.decrementButtonClicked, (s) => ({
     ...s,
-    current: s.current - 1,
+    current: s.current - s.by,
   })),
   on(counterEvents.resetButtonClicked, () => initialState),
+  on(counterEvents.countBySet, (s, a) => ({ ...s, by: a.by })),
 );
