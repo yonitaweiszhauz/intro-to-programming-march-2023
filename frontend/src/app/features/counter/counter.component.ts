@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectCounterCurrent, selectCounterResetDisabled } from './state';
+import { counterEvents } from './state/actions/counter.actions';
 
 @Component({
   selector: 'app-counter',
@@ -6,12 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./counter.component.css'],
 })
 export class CounterComponent {
-  current = 0;
+  current$ = this.store.select(selectCounterCurrent);
+  resetDisabled$ = this.store.select(selectCounterResetDisabled);
+
+  constructor(private readonly store: Store) {}
+  // Dispatch actions to store to update counts
   increment() {
-    this.current += 1;
+    //this.current += 1;
+    this.store.dispatch(counterEvents.incrementButtonClicked());
   }
 
   decrement() {
-    this.current -= 1;
+    // this.current -= 1;
+    this.store.dispatch(counterEvents.decrementButtonClicked());
+  }
+
+  reset() {
+    this.store.dispatch(counterEvents.resetButtonClicked());
   }
 }
