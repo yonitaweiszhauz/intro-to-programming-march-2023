@@ -4,12 +4,18 @@ import { CounterComponent } from './counter.component';
 import { StoreModule } from '@ngrx/store';
 import { featureName, reducers } from './state';
 import { CounterPrefsComponent } from './components/counter-prefs/counter-prefs.component';
+import { CounterEffects } from './state/effects/counter.effect';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [CounterComponent, CounterPrefsComponent],
+  declarations: [
+    CounterComponent,
+    CounterPrefsComponent,
+  ],
   imports: [
     CommonModule,
     StoreModule.forFeature(featureName, reducers),
+    EffectsModule.forFeature([CounterEffects]),
   ],
   exports: [CounterComponent],
 })

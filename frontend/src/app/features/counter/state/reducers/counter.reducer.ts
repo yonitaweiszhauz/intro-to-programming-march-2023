@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ValidCountByValues } from '../../models';
-import { counterEvents } from '../actions/counter.actions';
+import { counterDocuments, counterEvents } from '../actions/counter.actions';
 
 export interface CounterState {
   current: number; // for strong typing
@@ -15,6 +15,7 @@ const initialState: CounterState = {
 // return a new state given the current state and action
 export const reducer = createReducer(
   initialState,
+  on(counterDocuments.counterState, (_, a) => a.payload),
   on(counterEvents.incrementButtonClicked, (currentState: CounterState) => ({
     ...currentState,
     current: currentState.current + currentState.by,

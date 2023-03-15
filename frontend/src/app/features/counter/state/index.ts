@@ -19,7 +19,7 @@ export const reducers: ActionReducerMap<CounterState> = {
 const selectFeature = createFeatureSelector<CounterState>(featureName);
 
 // step 2 - select correct branch of feature
-const selectCounterBranch = createSelector(
+export const selectCounterBranch = createSelector(
   selectFeature,
   (f) => f.counter, // f is the feature
 );
