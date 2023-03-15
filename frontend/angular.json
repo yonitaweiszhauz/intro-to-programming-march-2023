@@ -142,7 +142,7 @@
     }
   },
   "cli": {
-    "analytics": "b7648170-095f-461c-9a34-33d1b7c0c511",
+    "analytics": "1deea3e9-4d53-4ef4-a247-8d01ae5e010a",
     "schematicCollections": [
       "@angular-eslint/schematics",
       "@cypress/schematic",

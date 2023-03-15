@@ -1,7 +1,8 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { ValidCountByValues } from '../../models';
 import { CounterState } from '../reducers/counter.reducer';
+import { ValidCountByValues } from '../../models';
 
+// Events are things that happen.
 export const counterEvents = createActionGroup({
   source: 'Counter',
   events: {
@@ -21,6 +22,7 @@ export const counterCommands = createActionGroup({
 });
 
 // Documents - just pure state
+
 export const counterDocuments = createActionGroup({
   source: 'Counter Documents',
   events: {

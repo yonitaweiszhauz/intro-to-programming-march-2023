@@ -4,9 +4,8 @@ import { CounterComponent } from './counter.component';
 import { StoreModule } from '@ngrx/store';
 import { featureName, reducers } from './state';
 import { CounterPrefsComponent } from './components/counter-prefs/counter-prefs.component';
-import { CounterEffects } from './state/effects/counter.effect';
 import { EffectsModule } from '@ngrx/effects';
-
+import { CounterEffects } from './state/effects/counter.effects';
 @NgModule({
   declarations: [
     CounterComponent,

@@ -11,8 +11,10 @@ import { counterEvents } from '../../state/actions/counter.actions';
 })
 export class CounterPrefsComponent {
   by$ = this.store.select(selectCountingBy);
+
   constructor(private readonly store: Store) {}
   setCountBy(by: ValidCountByValues) {
+    // this MEANS the user did this.
     this.store.dispatch(counterEvents.countBySet({ by }));
   }
 }
