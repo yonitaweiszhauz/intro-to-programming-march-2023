@@ -26,6 +26,7 @@ export class CounterEffects {
       ofType(counterCommands.loadCounterState), // it either stops here or it is a loadCounterState
       map(() => localStorage.getItem('counter-state')), // string | null
       filter((storedValue) => storedValue !== null), // stop here if it's null - we'll stick with initialState => string
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       map((theString) => JSON.parse(theString!) as CounterState), // type coercions are a MAJOR code smell
       map((counterState) =>
         counterDocuments.counterState({ payload: counterState }),
