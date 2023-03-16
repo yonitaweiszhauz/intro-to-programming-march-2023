@@ -33,7 +33,7 @@ public class EntityFrameworkResourceManager : IManageLearningResources
 
     public async Task<LearningResourcesResponse> GetCurrentResourcesAsync(CancellationToken token, bool watched)
     {
-        var data = await GetItems().Where(item => item.HasBeenWatched == watched).ToListAsync();
+        var data = await GetItems().Where(item => item.HasBeenWatched == watched).ToListAsync(); // + this
 
         var response = new LearningResourcesResponse(data);
         return response;
@@ -49,7 +49,7 @@ public class EntityFrameworkResourceManager : IManageLearningResources
     private  IQueryable<LearningResourceSummaryItem> GetItems()
     {
         return _context.GetActiveLearningResources()
-            .Select(item => MapFromDomain(item));
+            .Select(item => MapFromDomain(item)); // This!
     }
 
     public async Task<LearningResourceSummaryItem?> GetResourceByIdAsync(int resourceId)
