@@ -1,4 +1,5 @@
 using LearningResourcesApi.Adapters;
+using LearningResourcesApi.Domain;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,7 @@ builder.Services.AddDbContext<LearningResourcesDataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("resources"));
 });
+builder.Services.AddScoped<IManageLearningResources, EntityFrameworkResourceManager>();
 var app = builder.Build();
 
 app.UseCors();
