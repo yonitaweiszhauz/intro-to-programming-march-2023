@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { OnCallDeveloperResponseModel } from '../models/oncalldeveloper';
+import { OnCallDeveloperResponseModel } from '../features/learning/models/oncalldeveloper';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -10,7 +10,7 @@ export class OnCallDataService {
 
   getCurrentHelpInformation(): Observable<OnCallDeveloperResponseModel> {
     return this.client.get<OnCallDeveloperResponseModel>(
-      environment.onCallApi + 'oncalldeveloper'
+      environment.onCallApi + 'oncalldeveloper',
     );
   }
 }

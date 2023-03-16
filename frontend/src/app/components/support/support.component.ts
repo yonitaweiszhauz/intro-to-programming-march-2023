@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { OnCallDeveloperResponseModel } from 'src/app/models/oncalldeveloper';
+import { OnCallDeveloperResponseModel } from 'src/app/features/learning/models/oncalldeveloper';
 import { OnCallDataService } from 'src/app/services/oncall-data.service';
 
 @Component({

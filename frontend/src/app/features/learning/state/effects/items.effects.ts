@@ -6,6 +6,9 @@ import { itemsCommands, itemsDocuments } from '../actions/items.actions';
 import { ItemEntity } from '../reducers/items.reducer';
 @Injectable()
 export class ItemsEffects {
+  // add the new item
+  // send that payload on the action to the API using a POST
+  // when it comes to the API, turn it into a items.Documents.item and send to reducers
   loadItems$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(itemsCommands.loadTheItems),
