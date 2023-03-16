@@ -29,13 +29,14 @@ export class ItemsEffects {
             )
             .pipe(
               map((response) => itemsDocuments.item({ payload: response })),
-              catchError(() =>
-                of(
+              catchError((resp) => {
+                return of(
                   errorsEvents.errorHappened({
                     message: 'Welp, that failed! Sorry',
+                    innerError: resp,
                   }),
-                ),
-              ),
+                );
+              }),
             ),
       ),
     );
