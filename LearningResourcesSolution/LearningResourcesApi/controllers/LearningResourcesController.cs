@@ -1,6 +1,4 @@
-﻿
-
-using LearningResourcesApi.Domain;
+﻿using LearningResourcesApi.Domain;
 
 namespace LearningResourcesApi.Controllers;
 
@@ -24,7 +22,6 @@ public class LearningResourcesController : ControllerBase
         {
             return NoContent();
         }
-
     }
 
     [HttpDelete("/learning-resources/{resourceId:int}")]
@@ -41,15 +38,12 @@ public class LearningResourcesController : ControllerBase
     public async Task<ActionResult<LearningResourceSummaryItem>> AddResources(
         [FromBody] LearningResourcesCreateRequest request)
     {
-
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-
         LearningResourceSummaryItem response = await _resourceManager.AddResourceAsync(request);
         return Ok(response);
-
     }
 
 
